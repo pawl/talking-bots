@@ -1,38 +1,40 @@
 import os
+import re
 from chatterbotapi import ChatterBotFactory, ChatterBotType
-import time
+from logmanager import LogManager
 
-f = open('chatlog.txt','w')
-f.write('')
-f.close()
+def htmlsil(data):
+    p = re.compile(r'<.*?>')
+    return p.sub('', data)
 
-t=0.5
-lang=["en-GB","en"]
-
-def yaz(who,text,id):
-    f = open('chatlog.txt','a')
-    f.write(who+'> '+text+'\n')
-    f.close()
-    print who+'> '+text
-    os.system('python tts_google.py "'+text+'" '+lang[id]+' 2>/dev/null');
+def soyle(who,text,langid):
+    text=htmlsil(text)
+    logManager.writeLog(who+"\t\t> "+text)
+    print who+"> "+text
+    seslendir(text,langList[langid])
     pass
+
+def seslendir(text,lang):
+    os.system('python tts_google.py "'+text+'" '+lang+' 2>/dev/null');
+
+logManager=LogManager()
+
+langList=["en","en-GB"]
 
 factory = ChatterBotFactory()
 
 bot1 = factory.create(ChatterBotType.CLEVERBOT)
 bot1session = bot1.create_session()
 
-bot2 = factory.create(ChatterBotType.PANDORABOTS, 'b0dafd24ee35a477')
+bot2 = factory.create(ChatterBotType.CLEVERBOT)
 bot2session = bot2.create_session()
 
-s = 'What is purpose of life?'
+s = 'Hello dear.'
 while (1):
     
-    yaz('Cleverbot', s,0)
-    
+    soyle('Cleverbot', s,0)
+
     s = bot2session.think(s);
-    #time.sleep(t)
-    yaz('Chomsky', s,1)
-    
+    soyle('Chomsky', s,1)
+
     s = bot1session.think(s);
-    #time.sleep(t)
