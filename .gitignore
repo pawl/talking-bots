@@ -10,3 +10,7 @@
 # Logs and databases #
 ######################
 *.log
+
+# Generated sound #
+######################
+result.wav
