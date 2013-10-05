@@ -17,11 +17,11 @@ class LogManager(object):
         if not os.path.exists(self.__logdir):
             os.makedirs(self.__logdir)
 
-        f = open(self.__logdir+logfile,'w')
+        f = open(self.__logdir+self.__logfile+".log",'w')
         f.write('')
         f.close()
 
     def writeLog(self,text):
-        f = open(self.__logdir+self.__logfile,'a')
+        f = open(self.__logdir+self.__logfile+".log",'a')
         f.write(time.strftime(self.__dateformat, time.localtime())+" - "+text+"\n")
         f.close()
