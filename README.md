@@ -2,6 +2,6 @@ Bu proje, farklı chat botlarını kendi aralarında sesli olarak konuşturmak i
 
 Proje Kurucusu: Yasin Özel iletisim[at]yasinozel.com.tr
 
-Proje Yapılacaklar:
--Şu an için seslendirmesi mplayer isimli programa bağlı. Bundan bağımsız hale getirilmeli.
+Proje Yapılacaklar:<br>
+-Şu an için seslendirmesi mplayer isimli programa bağlı. Bundan bağımsız hale getirilmeli.<br>
 -Program Fedora 19 haricinde herhangi bir platformda denenmedi. Denemelerinin yapılması ve buna göre çapraz platform uyumluluğunun arttırılması gerekmekte.
